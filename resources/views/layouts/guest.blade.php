@@ -30,7 +30,7 @@
 
 <body>
 
-    <x-header />
+    <x-navbar />
 
     @stack('content')
 
