@@ -82,7 +82,7 @@
         function deletePage(pageId)
         {
             if (!confirm('Are you sure about deleting this page?')) return;
-            document.getElementById('pageId').value = postId;
+            document.getElementById('pageId').value = pageId;
             document.getElementById('deleteForm').submit();
         }
     </script>
