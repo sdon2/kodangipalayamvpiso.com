@@ -13,7 +13,7 @@ mix.js('resources/js/app.js', 'public/assets/js')
         require('tailwindcss'),
         require('autoprefixer'),
     ])
-    .sass('resources/sass/style.scss', 'pulic/assets/css/')
+    .sass('resources/sass/style.scss', 'public/assets/css/')
     .version();
 
 if (process.argv.length >= 4 && process.argv[3] === '--watch') {

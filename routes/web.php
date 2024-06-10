@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AnnouncementController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ImageController;
 use App\Http\Controllers\Admin\PageController;
@@ -25,6 +26,14 @@ Route::group(['middleware' => ['auth:sanctum', 'role:admin'], 'prefix' => '/admi
     Route::get('/sliders/add', [SliderController::class, 'add'])->name('sliders.add');
     Route::post('/sliders/add', [SliderController::class, 'store'])->name('sliders.store');
     Route::post('/sliders/delete', [SliderController::class, 'delete'])->name('sliders.delete');
+
+    Route::get('/announcements', [AnnouncementController::class, 'index'])->name('announcements');
+    Route::get('/announcements/add', [AnnouncementController::class, 'add'])->name('announcements.add');
+    Route::post('/announcements/add', [AnnouncementController::class, 'store'])->name('announcements.store');
+    Route::get('/announcements/edit/{id}', [AnnouncementController::class, 'edit'])->name('announcements.edit');
+    Route::post('/announcements/edit/{id}', [AnnouncementController::class, 'update'])->name('announcements.update');
+    Route::post('/announcements/delete', [AnnouncementController::class, 'delete'])->name('announcements.delete');
+    Route::post('/announcements/remove-attachment/{id}', [AnnouncementController::class, 'removeAttachment'])->name('announcements.remove-attachment');
 });
 
 Route::group(['middleware' => ['auth:sanctum', 'role:admin'], 'prefix' => '/image', 'as' => 'image.'], function () {
@@ -37,3 +46,4 @@ Route::get('/', [FrontendController::class, 'home'])
     ->name('home');
 
 Route::get('/{slug}', [FrontendController::class, 'page'])->name('page');
+Route::get('/announcement/{id}', [FrontendController::class, 'announcement'])->name('announcement.view');

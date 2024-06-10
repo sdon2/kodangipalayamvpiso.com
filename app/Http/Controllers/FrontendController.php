@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Announcement;
 use App\Models\Page;
 use App\Models\Slider;
 use Illuminate\Http\Request;
@@ -24,5 +25,11 @@ class FrontendController extends Controller
         } else {
             return view('page', ['page' => $page]);
         }
+    }
+
+    public function announcement($id)
+    {
+        $announcement = Announcement::findOrFail($id);
+        return view('announcement', ['announcement' => $announcement]);
     }
 }

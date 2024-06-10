@@ -34,16 +34,14 @@ class SliderController extends Controller
         try {
             $slider = Slider::create(collect($data)->except('images')->toArray());
 
-            foreach($request->images as $image) {
+            foreach ($request->images as $image) {
                 $slider->addMedia($image)->toMediaCollection('sliders');
             }
 
             DB::commit();
 
             session()->flash('success', 'Slider added successfully');
-
-        } catch(Exception $ex)
-        {
+        } catch (Exception $ex) {
             session()->flash('error', $ex->getMessage());
             DB::rollBack();
         }

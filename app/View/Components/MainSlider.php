@@ -25,7 +25,7 @@ class MainSlider extends Component
         } else {
             $sliders = collect($sliders->getMedia('sliders'))
                 ->transform(function ($slider) {
-                    return $slider->getUrl();
+                    return $slider->getUrl('sliders');
                 });
 
             $this->sliders = $sliders;

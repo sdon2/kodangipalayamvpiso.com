@@ -1,4 +1,6 @@
 *
 !public/
-!image-uploads/
+!sliders/
+!featured-images/
+!announcement-files/
 !.gitignore

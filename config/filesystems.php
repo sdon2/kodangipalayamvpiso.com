@@ -43,10 +43,31 @@ return [
             'throw' => true,
         ],
 
-        'image-uploads' => [
+        'sliders' => [
             'driver' => 'local',
-            'root' => storage_path('app/image-uploads'),
-            'url' => env('APP_URL').'/image-uploads',
+            'root' => storage_path('app/sliders'),
+            'url' => env('APP_URL').'/sliders',
+            'visibility' => 'public',
+        ],
+
+        'featured-images' => [
+            'driver' => 'local',
+            'root' => storage_path('app/featured-images'),
+            'url' => env('APP_URL').'/featured-images',
+            'visibility' => 'public',
+        ],
+
+        'announcement-files' => [
+            'driver' => 'local',
+            'root' => storage_path('app/announcement-files'),
+            'url' => env('APP_URL').'/announcement-files',
+            'visibility' => 'public',
+        ],
+
+        'event-images' => [
+            'driver' => 'local',
+            'root' => storage_path('app/event-images'),
+            'url' => env('APP_URL').'/event-images',
             'visibility' => 'public',
         ],
 
@@ -75,7 +96,10 @@ return [
 
     'links' => [
         public_path('storage') => storage_path('app/public'),
-        public_path('image-uploads') => storage_path('app/image-uploads'),
+        public_path('sliders') => storage_path('app/sliders'),
+        public_path('featured-images') => storage_path('app/featured-images'),
+        public_path('announcement-files') => storage_path('app/announcement-files'),
+        public_path('event-images') => storage_path('app/event-images'),
     ],
 
 ];

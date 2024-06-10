@@ -18,8 +18,11 @@
                     <x-nav-link :href="route('admin.pages')" :active="request()->routeIs('admin.pages')">
                         {{ __('Pages') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('admin.sliders')" :active="request()->routeIs('admin.pages')">
+                    <x-nav-link :href="route('admin.sliders')" :active="request()->routeIs('admin.sliders')">
                         {{ __('Sliders') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('admin.announcements')" :active="request()->routeIs('admin.announcements')">
+                        {{ __('Announcements') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -82,6 +85,12 @@
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('admin.pages')" :active="request()->routeIs('admin.pages.*')">
                 {{ __('Pages') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('admin.sliders')" :active="request()->routeIs('admin.sliders.*')">
+                {{ __('Sliders') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('admin.announcements')" :active="request()->routeIs('admin.announcements.*')">
+                {{ __('Announcements') }}
             </x-responsive-nav-link>
         </div>
 
