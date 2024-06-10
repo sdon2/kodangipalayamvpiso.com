@@ -1,7 +1,7 @@
 <x-guest-layout>
 
     @push('content')
-        <div class="conatiner pt-4">
+        <div class="container pt-4">
             <div class="h2">Contact</div>
         </div>
         <div class="container pt-4">
