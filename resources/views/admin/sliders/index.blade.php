@@ -27,8 +27,8 @@
                                     <th class="text-left px-4 py-2 text-gray-800">No</th>
                                     <th class="text-left px-4 py-2 text-gray-800">Name</th>
                                     <th class="text-left px-4 py-2 text-gray-800">Id</th>
-                                    <th class="text-left px-4 py-2 text-gray-800">Created On</th>
-                                    <th class="text-left px-4 py-2 text-gray-800">Updated On</th>
+                                    <th class="text-left px-4 py-2 text-gray-800">Images #</th>
+                                    <th class="text-left px-4 py-2 text-gray-800">Created</th>
                                     <th class="text-left px-4 py-2 text-gray-800">Actions</th>
                                 </tr>
                             </thead>
@@ -38,7 +38,7 @@
                                     <td class="px-4 py-2 text-gray-800 font-medium">{{ $loop->index + 1 }}</td>
                                     <td class="px-4 py-2 text-gray-800 font-medium">{{ $slider->slider_name }}</td>
                                     <td class="px-4 py-2 text-gray-800 font-medium">{{ $slider->slider_id }}</td>
-                                    <td class="px-4 py-2 text-gray-800 font-medium">{{ $slider->created_at->diffForHumans() }}</td>
+                                    <td class="px-4 py-2 text-gray-800 font-medium">{{ $slider->getMedia('sliders')->count() }}</td>
                                     <td class="px-4 py-2 text-gray-800 font-medium">{{ $slider->updated_at->diffForHumans() }}</td>
                                     <td class="px-4 py-2 text-gray-800 font-medium">
                                         <div class="flex items-center">
