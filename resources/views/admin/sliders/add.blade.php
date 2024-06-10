@@ -33,14 +33,16 @@
                 </div>
                 <div class="border p-2 mt-3" v-if="preview_list.length > 0">
                     <p>Preview:</p>
-                    <template>
-                        <div style="position: relative" v-for="item, index in preview_list" :key="index">
-                            <a href="#" class="remove-btn" v-on:click="removeImage(index, $event)">
-                                <i class="fa fa-remove" title="Remove Photo"></i>
-                            </a>
-                            <img :src="item" class="img-fluid py-2" />
-                        </div>
-                    </template>
+                    <div class="row">
+                        <template>
+                            <div class="col-3" style="position: relative;" v-for="item, index in preview_list" :key="index">
+                                <a href="#" class="remove-btn" v-on:click="removeImage(index, $event)">
+                                    <i class="fa fa-remove" title="Remove Photo"></i>
+                                </a>
+                                <img :src="item" class="img-fluid py-2" />
+                            </div>
+                        </template>
+                    </div>
                 </div>
             </div>
         </form>
@@ -53,16 +55,17 @@
                 float: left;
                 position: absolute;
                 top: 20px;
-                padding: 5px 10px;
-                left: 10px;
-                color: red;
-                background: white;
+                padding: 3px 5px;
+                left: 25px;
+                color: #ffffff;
+                background: #cc0000;
                 border-radius: 50%;
+                font-size: 10px;
             }
 
             .remove-btn:hover {
-                color: white;
-                background: red;
+                color: #cc0000;
+                background: #ffffff;
             }
 
             .nk-post-meta {
