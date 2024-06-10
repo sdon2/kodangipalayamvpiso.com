@@ -23,7 +23,7 @@ class PageFactory extends Factory
     public function definition()
     {
         return [
-            'title' => $this->faker->sentence(5),
+            'title' => $this->faker->sentence(1),
             'language' => 'en',
             'content' => $this->faker->sentence(150),
             'show_in_menu' => true,
