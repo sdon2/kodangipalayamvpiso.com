@@ -7,4 +7,9 @@
         </div>
     </div>
 @empty
+    <div class="col-md-12 py-2 px-0">
+        <div class="alert alert-warning">
+            No announcements found. Please try after sometime.
+        </div>
+    </div>
 @endforelse
