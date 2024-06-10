@@ -96,9 +96,9 @@
 <script src="{{ asset('assets/bower_components/keymaster/keymaster.js') }}"></script>
 <!-- Piroll -->
 <script src="{{ asset('assets/js/piroll.min.js') }}"></script>
-<script src="{{ asset('assets/js/piroll-init.js') }}"></script>
+<script src="{{ asset('assets/js/piroll-init.js') }}"></script> --}}
 <!-- Custom -->
-<script src="{{ asset('assets/js/custom.js') }}"></script> --}}
+<script src="{{ asset('assets/js/custom.js') }}"></script>
 
 <script src="{{ asset('assets/js/app.js') }}"></script>
 

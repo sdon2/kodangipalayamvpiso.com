@@ -18,6 +18,7 @@
             </div>
         </div>
     </div>
+
     <!-- END: Header Title -->
     <div class="container">
         <div class="row">
@@ -33,26 +34,32 @@
                     </div>
                     <!-- END: Post Text -->
                 </div>
-                <!-- END: Post Share -->
+                <!-- END: Post -->
+                <div class="nk-gap-3"></div>
             </div>
-            <!-- END: Post -->
-            <div class="nk-gap-3"></div>
         </div>
     </div>
 
     @push('content')
+        @if ($page->slug == 'home' && $sliders->count())
+            <div class="swiper" id="main-slider">
+                <!-- Additional required wrapper -->
+                <div class="swiper-wrapper">
+                    <!-- Slides -->
+                    @foreach ($sliders as $slider)
+                        <div class="swiper-slide">
+                            <img src="{{ $slider }}" alt="slide">
+                        </div>
+                    @endforeach
+                </div>
+                <!-- If we need navigation buttons -->
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+        @endif
         <div class="container pt-4">
             {!! $page->content !!}
         </div>
-    @endpush
-
-    @push('styles')
-        <style type="text/css">
-            .nk-post-text {
-                color: #222222;
-                font-size: 1.25rem;
-            }
-        </style>
     @endpush
 
 </x-guest-layout>

@@ -8,17 +8,12 @@ use App\Http\Controllers\FrontendController;
 use App\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Support\Facades\Route;
 
-require __DIR__.'/auth.php';
-
-Route::get('/', [FrontendController::class, 'home'])->name('home');
+require __DIR__ . '/auth.php';
 
 Route::get('/dashboard', [DashboardController::class, 'index'])
-    ->middleware(['auth'])->name('dashboard');
+    ->middleware(['auth', 'role:admin'])->name('dashboard');
 
-Route::get('/dashboard', [DashboardController::class, 'index'])
-    ->middleware(['auth'])->name('dashboard');
-
-Route::group(['middleware' => ['auth:sanctum'], 'prefix' => '/admin', 'as' => 'admin.'], function () {
+Route::group(['middleware' => ['auth:sanctum', 'role:admin'], 'prefix' => '/admin', 'as' => 'admin.'], function () {
     Route::get('/pages', [PageController::class, 'index'])->name('pages');
     Route::get('/pages/add', [PageController::class, 'add'])->name('pages.add');
     Route::post('/pages/add', [PageController::class, 'store'])->name('pages.store');
@@ -32,10 +27,13 @@ Route::group(['middleware' => ['auth:sanctum'], 'prefix' => '/admin', 'as' => 'a
     Route::post('/sliders/delete', [SliderController::class, 'delete'])->name('sliders.delete');
 });
 
-Route::group(['middleware' => ['auth:sanctum'], 'prefix' => '/image', 'as' => 'image.'], function () {
+Route::group(['middleware' => ['auth:sanctum', 'role:admin'], 'prefix' => '/image', 'as' => 'image.'], function () {
     Route::get('/list', [ImageController::class, 'list'])->name('list');
     Route::post('/upload', [ImageController::class, 'upload'])->name('upload')->withoutMiddleware(VerifyCsrfToken::class);
     Route::post('/delete', [ImageController::class, 'delete'])->name('delete')->withoutMiddleware(VerifyCsrfToken::class);
 });
+
+Route::get('/', [FrontendController::class, 'home'])
+    ->name('home');
 
 Route::get('/{slug}', [FrontendController::class, 'page'])->name('page');

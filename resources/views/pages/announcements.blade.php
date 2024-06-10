@@ -33,10 +33,9 @@
                     </div>
                     <!-- END: Post Text -->
                 </div>
-                <!-- END: Post Share -->
+                <!-- END: Post -->
+                <div class="nk-gap-3"></div>
             </div>
-            <!-- END: Post -->
-            <div class="nk-gap-3"></div>
         </div>
     </div>
 

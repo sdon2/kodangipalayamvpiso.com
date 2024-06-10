@@ -3,12 +3,17 @@ require('laravel-mix-serve');
 
 mix.disableNotifications();
 
+mix.options({
+    processCssUrls: false
+});
+
 mix.js('resources/js/app.js', 'public/assets/js')
     .postCss('resources/css/app.css', 'public/assets/css', [
         require('postcss-import'),
         require('tailwindcss'),
         require('autoprefixer'),
     ])
+    .sass('resources/sass/style.scss', 'pulic/assets/css/')
     .version();
 
 if (process.argv.length >= 4 && process.argv[3] === '--watch') {

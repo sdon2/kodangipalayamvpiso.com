@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Page;
 use App\Models\Slider;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Str;
 
 class FrontendController extends Controller
 {
@@ -17,12 +19,10 @@ class FrontendController extends Controller
     {
         $page = Page::where('slug', $slug)->firstOrFail();
 
-        $slider = null;
-        if ($page->slug == 'home')
-        {
-            $slider = Slider::query()->where('slider_id', 'main-slider')->first();
+        if (View::exists('pages.' . $page->slug)) {
+            return view('pages.' . $page->slug, ['page' => $page]);
+        } else {
+            return view('page', ['page' => $page]);
         }
-
-        return view('page', ['page' => $page, 'slider' => $slider]);
     }
 }

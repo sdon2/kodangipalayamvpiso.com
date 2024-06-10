@@ -33,26 +33,18 @@
                     </div>
                     <!-- END: Post Text -->
                 </div>
-                <!-- END: Post Share -->
+                <!-- END: Post -->
+                <div class="nk-gap-3"></div>
             </div>
-            <!-- END: Post -->
-            <div class="nk-gap-3"></div>
         </div>
     </div>
 
     @push('content')
+        <x-main-slider />
+
         <div class="container pt-4">
             {!! $page->content !!}
         </div>
-    @endpush
-
-    @push('styles')
-        <style type="text/css">
-            .nk-post-text {
-                color: #222222;
-                font-size: 1.25rem;
-            }
-        </style>
     @endpush
 
 </x-guest-layout>
