@@ -3,6 +3,7 @@
         <div class="container mt-4">
             <div class="col-md-12 py-2 px-0">
                 <div class="h3 pb-2">{{ $announcement->title }}</div>
+                <div class="pb-2">entered on {{ \Carbon\Carbon::parse($announcement->announcement_date)->toFormattedDateString() }}</div>
                 <div class="my-2">{!! $announcement->content !!}</div>
                 @if ($announcement->hasMedia('announcement-files'))
                 <div>
