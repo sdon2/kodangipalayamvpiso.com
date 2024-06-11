@@ -25,7 +25,7 @@ class RegisterComplaint extends Mailable
      */
     public function envelope()
     {
-        return new Envelope(config('mail.from.address'), config('app.admin-email'), null, null, null, 'Register Complaint');
+        return new Envelope(config('mail.from.address'), config('app.admin-email'), null, null, null, 'Complaint Registered through the ' . config('app.name') . ' Website');
     }
 
     /**
