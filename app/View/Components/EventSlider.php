@@ -2,10 +2,10 @@
 
 namespace App\View\Components;
 
-use App\Models\Slider;
+use App\Models\Event;
 use Illuminate\View\Component;
 
-class MainSlider extends Component
+class EventSlider extends Component
 {
     public $sliders;
 
@@ -14,16 +14,14 @@ class MainSlider extends Component
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Event $event)
     {
-        $sliders = Slider::mainSlider();
-
-        if (!$sliders) {
+        if (!$event) {
             $this->sliders = collect();
         } else {
-            $sliders = collect($sliders->getMedia('sliders'))
+            $sliders = collect($event->getMedia('event-images'))
                 ->transform(function ($slider) {
-                    return $slider->getUrl('sliders');
+                    return $slider->getUrl('event-images');
                 });
 
             $this->sliders = $sliders;
@@ -37,6 +35,6 @@ class MainSlider extends Component
      */
     public function render()
     {
-        return view('components.main-slider');
+        return view('components.event-slider');
     }
 }

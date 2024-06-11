@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\AddAnnouncementRequest;
-use App\Http\Requests\EditAnnouncementRequest;
+use App\Http\Requests\AnnouncementAddRequest;
+use App\Http\Requests\AnnouncementEditRequest;
 use App\Models\Announcement;
 use Exception;
 use Illuminate\Http\Request;
@@ -23,7 +23,7 @@ class AnnouncementController extends Controller
         return view('admin.announcements.add');
     }
 
-    public function store(AddAnnouncementRequest $request)
+    public function store(AnnouncementAddRequest $request)
     {
         $data = collect($request->validated())->except('announcement_file')->toArray();
 
@@ -51,7 +51,7 @@ class AnnouncementController extends Controller
         return view('admin.announcements.edit', ['announcement' => $announcement]);
     }
 
-    public function update($id, EditAnnouncementRequest $request)
+    public function update($id, AnnouncementEditRequest $request)
     {
         $announcement = Announcement::findOrFail($id);
 

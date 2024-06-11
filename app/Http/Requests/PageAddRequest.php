@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class EditAnnouncementRequest extends FormRequest
+class PageAddRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,10 +24,14 @@ class EditAnnouncementRequest extends FormRequest
     public function rules()
     {
         return [
-            'announcement_date' => ['required'],
             'title' => ['required'],
+            'keywords' => ['nullable'],
+            'description' => ['nullable'],
             'content' => ['required'],
-            'announcement_file' => ['nullable'],
+            'show_in_menu' => ['required', 'boolean'],
+            'featured_image' => ['nullable'],
+            'menu_order' => ['required_if:show_in_menu,true'],
+            'menu_icon' => ['nullable'],
         ];
     }
 }

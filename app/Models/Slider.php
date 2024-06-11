@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia;
@@ -18,7 +19,7 @@ class Slider extends Model implements HasMedia
 
     public const collectionName = 'sliders';
 
-    public function getSlugOptions() : SlugOptions
+    public function getSlugOptions(): SlugOptions
     {
         return SlugOptions::create()
             ->generateSlugsFrom('slider_name')
@@ -43,5 +44,12 @@ class Slider extends Model implements HasMedia
     {
         $this->addMediaConversion(self::collectionName)
             ->crop('crop-center', 1200, 500);
+    }
+
+    protected function scopeMainSlider(Builder $query)
+    {
+        return $query
+            ->where('slider_id', 'main-slider')
+            ->first();
     }
 }

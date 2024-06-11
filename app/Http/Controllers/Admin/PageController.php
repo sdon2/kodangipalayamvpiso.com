@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\AddPageRequest;
-use App\Http\Requests\EditPageRequest;
+use App\Http\Requests\PageAddRequest;
+use App\Http\Requests\PageEditRequest;
 use App\Models\Page;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -22,7 +22,7 @@ class PageController extends Controller
         return view('admin.pages.add');
     }
 
-    public function store(AddPageRequest $request)
+    public function store(PageAddRequest $request)
     {
         $data = $request->validated();
 
@@ -39,7 +39,7 @@ class PageController extends Controller
         return view('admin.pages.edit', ['page' => $page]);
     }
 
-    public function update(EditPageRequest $request)
+    public function update(PageEditRequest $request)
     {
         $data = $request->validated();
 

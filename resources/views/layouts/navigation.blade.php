@@ -24,6 +24,12 @@
                     <x-nav-link :href="route('admin.announcements')" :active="request()->routeIs('admin.announcements')">
                         {{ __('Announcements') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('admin.events')" :active="request()->routeIs('admin.events')">
+                        {{ __('Events') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('admin.scroll-texts')" :active="request()->routeIs('admin.scroll-texts')">
+                        {{ __('Scroll Texts') }}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -91,6 +97,12 @@
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('admin.announcements')" :active="request()->routeIs('admin.announcements.*')">
                 {{ __('Announcements') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('admin.events')" :active="request()->routeIs('admin.events.*')">
+                {{ __('Events') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('admin.scroll-texts')" :active="request()->routeIs('admin.scroll-texts.*')">
+                {{ __('Scroll Texts') }}
             </x-responsive-nav-link>
         </div>
 

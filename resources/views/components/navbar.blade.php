@@ -15,6 +15,7 @@
         </a>
     </div>
 </nav>
+
 <nav class="navbar-expand-lg navbar_menus navbar-light shift">
     <div class="container">
         <div class="row">
@@ -27,8 +28,7 @@
                     @foreach ($menu as $entry)
                         <li class="nav-item">
                             <a class="nav-link px-2" href="{{ route('page', ['slug' => $entry->slug]) }}">
-                                <span
-                                    class="menu_name {{ Request::url() === route('page', ['slug' => $entry->slug]) ? 'active' : '' }}">
+                                <span class="menu_name {{ $entry->active ? 'active' : '' }}">
                                     <i class="{{ $entry->menu_icon ?: '' }} mr-1"></i>
                                     {{ $entry->title }}
                                 </span>
@@ -43,3 +43,6 @@
         </div>
     </div>
 </nav>
+
+
+<x-scroll-text />

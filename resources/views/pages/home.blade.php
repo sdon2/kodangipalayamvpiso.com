@@ -45,6 +45,19 @@
         <div class="container pt-4">
             {!! $page->content !!}
         </div>
+
+        <div class="container pt-4 mt-4">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="h3 px-2 py-2" style="background: #ccc">Recent Announcements</div>
+                    <x-announcement-list size="w-100" items-per-page="3" show-pagination="0" />
+                </div>
+                <div class="col-md-6 mt-4 mt-md-0">
+                    <div class="h3 px-2 py-2" style="background: #ccc">Recent Events</div>
+                    <x-event-list size="w-100" items-per-page="3" show-pagination="0" />
+                </div>
+            </div>
+        </div>
     @endpush
 
 </x-guest-layout>

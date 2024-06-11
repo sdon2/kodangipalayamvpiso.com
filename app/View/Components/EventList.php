@@ -2,14 +2,14 @@
 
 namespace App\View\Components;
 
-use App\Models\Announcement;
+use App\Models\Event;
 use Illuminate\Support\Str;
 use Illuminate\View\Component;
 use Stevebauman\Hypertext\Transformer;
 
-class AnnouncementList extends Component
+class EventList extends Component
 {
-    public $announcements = null;
+    public $events = null;
     public $size = null;
     public $showPagination = false;
 
@@ -18,7 +18,7 @@ class AnnouncementList extends Component
         $this->size = $size;
         $this->showPagination = $showPagination;
 
-        $this->announcements = Announcement::recent($itemsPerPage);
+        $this->events = Event::recent($itemsPerPage);
 
         $this->transformCollection();
     }
@@ -27,15 +27,15 @@ class AnnouncementList extends Component
     {
         $transformer = new Transformer();
 
-        $announcements = (function () use ($transformer) {
-            return collect($this->announcements->items())
+        $events = (function () use ($transformer) {
+            return collect($this->events->items())
                 ->transform(function ($entry) use ($transformer) {
                     $entry->content = Str::limit($transformer->toText($entry->content), 500);
                     return $entry;
                 });
         })();
 
-        $this->announcements->setCollection($announcements);
+        $this->events->setCollection($events);
     }
 
     /**
@@ -45,6 +45,6 @@ class AnnouncementList extends Component
      */
     public function render()
     {
-        return view('components.announcement-list');
+        return view('components.event-list');
     }
 }

@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\Admin\AnnouncementController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\ImageController;
 use App\Http\Controllers\Admin\PageController;
+use App\Http\Controllers\Admin\ScrollTextController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Middleware\VerifyCsrfToken;
@@ -34,6 +36,16 @@ Route::group(['middleware' => ['auth:sanctum', 'role:admin'], 'prefix' => '/admi
     Route::post('/announcements/edit/{id}', [AnnouncementController::class, 'update'])->name('announcements.update');
     Route::post('/announcements/delete', [AnnouncementController::class, 'delete'])->name('announcements.delete');
     Route::post('/announcements/remove-attachment/{id}', [AnnouncementController::class, 'removeAttachment'])->name('announcements.remove-attachment');
+
+    Route::get('/events', [EventController::class, 'index'])->name('events');
+    Route::get('/events/add', [EventController::class, 'add'])->name('events.add');
+    Route::post('/events/add', [EventController::class, 'store'])->name('events.store');
+    Route::post('/events/delete', [EventController::class, 'delete'])->name('events.delete');
+
+    Route::get('/scroll-texts', [ScrollTextController::class, 'index'])->name('scroll-texts');
+    Route::get('/scroll-texts/add', [ScrollTextController::class, 'add'])->name('scroll-texts.add');
+    Route::post('/scroll-texts/add', [ScrollTextController::class, 'store'])->name('scroll-texts.store');
+    Route::post('/scroll-texts/delete', [ScrollTextController::class, 'delete'])->name('scroll-texts.delete');
 });
 
 Route::group(['middleware' => ['auth:sanctum', 'role:admin'], 'prefix' => '/image', 'as' => 'image.'], function () {
@@ -47,3 +59,4 @@ Route::get('/', [FrontendController::class, 'home'])
 
 Route::get('/{slug}', [FrontendController::class, 'page'])->name('page');
 Route::get('/announcement/{id}', [FrontendController::class, 'announcement'])->name('announcement.view');
+Route::get('/event/{id}', [FrontendController::class, 'event'])->name('event.view');

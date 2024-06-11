@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AddPageRequest extends FormRequest
+class EventAddRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,14 +24,11 @@ class AddPageRequest extends FormRequest
     public function rules()
     {
         return [
+            'event_date' => ['required'],
             'title' => ['required'],
-            'keywords' => ['nullable'],
-            'description' => ['nullable'],
             'content' => ['required'],
-            'show_in_menu' => ['required', 'boolean'],
-            'featured_image' => ['nullable'],
-            'menu_order' => ['required_if:show_in_menu,true'],
-            'menu_icon' => ['nullable'],
+            'event_images' => ['nullable','array'],
+            'event_images.*' => ['required', 'file', 'mimes:png,jpg']
         ];
     }
 }

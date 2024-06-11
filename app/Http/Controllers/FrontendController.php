@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Announcement;
+use App\Models\Event;
 use App\Models\Page;
 use App\Models\Slider;
 use Illuminate\Http\Request;
@@ -31,5 +32,11 @@ class FrontendController extends Controller
     {
         $announcement = Announcement::findOrFail($id);
         return view('announcement', ['announcement' => $announcement]);
+    }
+
+    public function event($id)
+    {
+        $event = Event::findOrFail($id);
+        return view('event', ['event' => $event]);
     }
 }

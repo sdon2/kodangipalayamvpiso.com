@@ -13,11 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('events', function (Blueprint $table) {
+        Schema::create('scroll_texts', function (Blueprint $table) {
             $table->id();
-            $table->timestamp('event_date');
-            $table->string('title');
-            $table->text('content');
+            $table->string('scroll_text');
             $table->timestamps();
         });
     }
@@ -29,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('events');
+        Schema::dropIfExists('scroll_texts');
     }
 };

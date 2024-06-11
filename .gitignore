@@ -4,6 +4,7 @@
 /public/sliders
 /public/featured-images
 /public/announcement-files
+/public/event-images
 /storage/*.key
 /vendor
 .env
