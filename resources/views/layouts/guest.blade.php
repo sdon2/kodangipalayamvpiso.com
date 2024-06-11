@@ -24,6 +24,8 @@
     <!-- jQuery -->
     <script src="{{ asset('assets/bower_components/jquery/dist/jquery.min.js') }}"></script>
 
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/ticker.min.css') }}" />
+
     @stack('styles')
 
 </head>
