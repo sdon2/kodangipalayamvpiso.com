@@ -72,16 +72,6 @@
         @endif
     @endpush
 
-    @push('scripts')
-        <script>
-            $(function() {
-                $("input[name=phone]")[0].oninvalid = function() {
-                    this.setCustomValidity("Please enter a valid phone number.");
-                };
-            });
-        </script>
-    @endpush
-
     @push('styles')
         <style>
             .invalid-feedback {
