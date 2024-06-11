@@ -9,6 +9,8 @@ use App\Http\Controllers\Admin\ScrollTextController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Middleware\VerifyCsrfToken;
+use App\Mail\RegisterComplaint;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 require __DIR__ . '/auth.php';
@@ -60,3 +62,4 @@ Route::get('/', [FrontendController::class, 'home'])
 Route::get('/{slug}', [FrontendController::class, 'page'])->name('page');
 Route::get('/announcement/{id}', [FrontendController::class, 'announcement'])->name('announcement.view');
 Route::get('/event/{id}', [FrontendController::class, 'event'])->name('event.view');
+Route::post('/complaint/receive', [FrontendController::class, 'complaint'])->name('complaint.receive');
