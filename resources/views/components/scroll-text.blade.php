@@ -1,8 +1,10 @@
 @if ($texts->count())
-    <div class="container-fluid py-2 scroller">
-        @foreach ($texts as $text)
-            <div class="marquee">{{ $text->scroll_text }}</div>
-        @endforeach
+    <div class="container-fluid scroller">
+        <div class="marquee3k py-2 w-100" data-speed="1" data-reverse="true" data-pausable="false">
+            @foreach ($texts as $text)
+                <span style="padding-left: 200px;">{{ $text->scroll_text }}</span>
+            @endforeach
+        </div>
     </div>
     <style>
         .scroller {
@@ -11,16 +13,15 @@
             font-weight: bold;
             border-bottom: 1px solid #222222;
         }
+        .marquee3k > span:first-child {
+            display: none;
+        }
     </style>
 
     @push('scripts')
-        <script src="{{ asset('assets/bower_components/jquery/dist/jquery.min.js') }}"></script>
-        <script src="{{ asset('assets/js/jquery.marquee.js') }}"></script>
+        <script src="{{ asset('assets/js/marquee3k.min.js') }}"></script>
         <script>
-            $('.marquee').marquee({
-                count: 50,
-                speed: 10
-            });
+            Marquee3k.init();
         </script>
     @endpush
 @endif
