@@ -1,5 +1,5 @@
 @if ($texts->count())
-    <div class="container-fluid scroller" style="display: none">
+    <div class="container-fluid scroller hidden">
         <div class="marquee py-2 w-100">
             @foreach ($texts as $text)
                 <div><span>{{ $text->scroll_text }}</span></div>
@@ -13,8 +13,7 @@
     <script src="{{ asset('assets/js/ticker.min.js') }}"></script>
     <script>
         $(function() {
-            $('.scroller').css('display', 'block')
-                .css('font-weight', 'bold');
+            $('.scroller').slideDown('fast');
             $('.marquee').ticker();
         });
     </script>
