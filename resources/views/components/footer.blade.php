@@ -1,6 +1,6 @@
-<section class="mx-auto mt-4" style="background: #007aff">
+<section class="mx-auto mt-4" style="background: #06973d;">
 
-    <footer class="pt-3">
+    <footer class="pt-3" style="color: #ffffff">
         <div class="container text-center pb-4">
             <div class="col-12">
                 Contents Owned and Updated by {{ config('app.name') }}<br><br>
