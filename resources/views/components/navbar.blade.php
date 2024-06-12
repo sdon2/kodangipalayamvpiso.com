@@ -1,9 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
         <a class="navbar-brand d-flex align-items-center mr-0" href="/">
-            <img src="{{ asset('assets/images/logo.jpg') }}" class="img-fluid pl-0 mr-2 logo_image"
-                alt="Rural Development &amp; Panchayat Raj , Tamil Nadu"
-                title="Rural Development &amp; Panchayat Raj, Tamil Nadu" style="">
+            <x-application-logo class="img-fluid pl-0 mr-2 logo_image" width="100px" />
             <div class="nav_heading">
                 <h5 class="mt-lg-2 font-17" style="color:#0e446d;font-weight:bold;">
                     கோடங்கிபாளையம் கிராம பஞ்சாயத்து
