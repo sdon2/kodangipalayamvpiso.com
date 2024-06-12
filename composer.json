@@ -11,6 +11,7 @@
         "laravel/framework": "^9.0",
         "laravel/sanctum": "^2.10",
         "laravel/tinker": "^2.5",
+        "mews/captcha": "^3.3",
         "spatie/laravel-medialibrary": "^10.15",
         "spatie/laravel-permission": "^6.7",
         "spatie/laravel-sluggable": "^3.6.0",
