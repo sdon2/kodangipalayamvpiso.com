@@ -43,6 +43,14 @@ return [
             'throw' => true,
         ],
 
+        'image-uploads' => [
+            'driver' => 'local',
+            'root' => storage_path('app/image-uploads'),
+            'url' => env('APP_URL').'/image-uploads',
+            'visibility' => 'public',
+            'throw' => true,
+        ],
+
         'sliders' => [
             'driver' => 'local',
             'root' => storage_path('app/sliders'),
@@ -96,6 +104,7 @@ return [
 
     'links' => [
         public_path('storage') => storage_path('app/public'),
+        public_path('image-uploads') => storage_path('app/image-uploads'),
         public_path('sliders') => storage_path('app/sliders'),
         public_path('featured-images') => storage_path('app/featured-images'),
         public_path('announcement-files') => storage_path('app/announcement-files'),

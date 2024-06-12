@@ -1,6 +1,7 @@
 /node_modules
 /public/hot
 /public/storage
+/public/image-uploads
 /public/sliders
 /public/featured-images
 /public/announcement-files
