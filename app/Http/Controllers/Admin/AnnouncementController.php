@@ -62,6 +62,7 @@ class AnnouncementController extends Controller
             $announcement->update($data);
 
             if ($request->announcement_file) {
+                $announcement->clearMediaCollection('announcement-files');
                 $announcement->addMedia($request->announcement_file)->toMediaCollection('announcement-files');
             }
 

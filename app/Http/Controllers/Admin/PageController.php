@@ -68,6 +68,7 @@ class PageController extends Controller
             $page->update($data);
 
             if ($image = $request->featured_image) {
+                $page->clearMediaCollection('featured-images');
                 $page->addMedia($image)->toMediaCollection('featured-images');
             }
 
