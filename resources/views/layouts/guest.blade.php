@@ -34,6 +34,10 @@
 
     <x-navbar />
 
+    <x-scroll-text />
+
+    <x-featured-image />
+
     @stack('content')
 
     <x-footer />

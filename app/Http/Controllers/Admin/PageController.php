@@ -6,8 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\PageAddRequest;
 use App\Http\Requests\PageEditRequest;
 use App\Models\Page;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class PageController extends Controller
 {
@@ -24,13 +26,29 @@ class PageController extends Controller
 
     public function store(PageAddRequest $request)
     {
-        $data = $request->validated();
+        $data = collect($request->validated())->except('featured_image')->toArray();
 
         $data['user_id'] = Auth::user()->id;
 
-        Page::create($data);
+        DB::beginTransaction();
 
-        return response(['message' => 'Page created successfuly']);
+        try {
+            $page = Page::create($data);
+
+            if ($image = $request->featured_image) {
+                $page->addMedia($image)->toMediaCollection('featured-images');
+            }
+
+            DB::commit();
+
+            $response = ['message' => 'Page added successfully'];
+        } catch (Exception $ex) {
+            DB::rollBack();
+
+            $response = ['error', $ex->getMessage()];
+        }
+
+        return response($response);
     }
 
     public function edit($id)
@@ -41,13 +59,28 @@ class PageController extends Controller
 
     public function update(PageEditRequest $request)
     {
-        $data = $request->validated();
+        $data = collect($request->validated())->except('featured_image')->toArray();
 
         $page = Page::findOrFail($request->id);
 
-        $page->update($data);
+        try {
 
-        return response(['message' => 'Page updated successfuly']);
+            $page->update($data);
+
+            if ($image = $request->featured_image) {
+                $page->addMedia($image)->toMediaCollection('featured-images');
+            }
+
+            DB::commit();
+
+            $response = ['message' => 'Page updated successfully'];
+        } catch (Exception $ex) {
+            DB::rollBack();
+
+            $response = ['error', $ex->getMessage()];
+        }
+
+        return response($response);
     }
 
     public function delete(Request $request)
@@ -59,5 +92,16 @@ class PageController extends Controller
         session()->flash('success', 'Page deleted successfully');
 
         return redirect()->back();
+    }
+
+    public function removeImage($id)
+    {
+        $page = Page::findOrFail($id);
+
+        if ($page->hasMedia('featured-images')) {
+            $page->getMedia('featured-images')->first()->delete();
+        }
+
+        return response(['message' => 'Image deleted successfuly']);
     }
 }

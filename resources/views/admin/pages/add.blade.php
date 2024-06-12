@@ -19,12 +19,10 @@
                         <div class="px-2">
                             <input type="checkbox" class="mr-4" name="show_in_menu" id="show_in_menu"
                                 v-model="page.show_in_menu">
-                            <input type="text" name="menu_order" id="menu_order"
-                                v-model="page.menu_order" placeholder="Menu Order" v-if="page.show_in_menu"
-                                style="width:100px">
-                            <input type="text" name="menu_icon" id="menu_icon"
-                                v-model="page.menu_icon" placeholder="Menu Icon" v-if="page.show_in_menu"
-                                style="width:150px">
+                            <input type="text" name="menu_order" id="menu_order" v-model="page.menu_order"
+                                placeholder="Menu Order" v-if="page.show_in_menu" style="width:100px">
+                            <input type="text" name="menu_icon" id="menu_icon" v-model="page.menu_icon"
+                                placeholder="Menu Icon" v-if="page.show_in_menu" style="width:150px">
                         </div>
                     </div>
                 </div>
@@ -33,6 +31,10 @@
                 <label for="page_description">Description</label>
                 <input type="text" class="form-control" name="desciprion" id="page_description"
                     v-model="page.description" placeholder="Post Description">
+            </div>
+            <div class="col-lg-12 pb-4">
+                <label for="featured-image">Featured Image</label>
+                <input type="file" class="d-block" name="featured-image" v-on:change="handleFile($event)" />
             </div>
             <div class="col-lg-12 pb-4">
                 <label for="froala-editor">Content</label>
@@ -96,26 +98,48 @@
                         show_in_menu: false,
                         menu_order: null,
                         menu_icon: null,
+                        featured_image: null,
                     }
                 },
                 methods: {
                     asset: function(url) {
                         return asset_url + url;
                     },
+                    makeFormData: function() {
+                        var keys = Object.keys(this.page);
+                        var formData = new FormData();
+                        keys.forEach(key => {
+                            if (typeof this.page[key] === 'boolean') {
+                                this.page[key] = this.page[key] ? 1 : 0;
+                            }
+                            if (this.page[key] !== null) {
+                                formData.append(key, this.page[key]);
+                            }
+                        });
+                        return formData;
+                    },
                     publish: function() {
                         if (editor) {
                             this.page.content = editor.html.get();
+                            var data = this.makeFormData();
                             axios.get(this.asset('sanctum/csrf-cookie')).then(response => {
-                                axios.post('{{ route('admin.pages.store') }}', this.page).then(
+                                axios.post('{{ route('admin.pages.store') }}',
+                                    data, {
+                                        headers: {
+                                            'Content-Type': 'multipart/form-data'
+                                        }
+                                    }).then(
                                     response => {
                                         if (response.data.message) {
                                             $.toast({
                                                 heading: 'Success',
                                                 text: response.data.message,
                                                 icon: 'success',
-                                                afterHidden: function() {
-                                                    window.location.href =
-                                                        "{{ route('admin.pages') }}";
+                                                afterShown: function() {
+                                                    setTimeout(function() {
+                                                        window.location.href =
+                                                            "{{ route('admin.pages') }}";
+                                                    }, 1000);
                                                 }
                                             });
                                         }
@@ -136,7 +160,14 @@
                         } else {
                             console.error('Editor initialization failed.');
                         }
-                    }
+                    },
+                    handleFile: function($event) {
+                        if ($event.target.files[0]) {
+                            this.page.featured_image = $event.target.files[0];
+                        } else {
+                            this.page.featured_image = null;
+                        }
+                    },
                 },
                 computed: {
                     createdAt: function() {
@@ -151,8 +182,10 @@
                 charCounterCount: true,
                 pluginsEnabled: [
                     //'align', 'charCounter', 'codeBeautifier', 'codeView', 'colors', 'draggable', 'embedly', 'emoticons', 'entities', 'file', 'fontAwesome', 'fontFamily', 'fontSize', 'fullscreen', 'image', 'imageTUI', 'imageManager', 'inlineStyle', 'inlineClass', 'lineBreaker', 'lineHeight', 'link', 'lists', 'paragraphFormat', 'paragraphStyle', 'quickInsert', 'quote', 'save', 'table', 'url', 'video', 'wordPaste'
-                    'align', 'codeBeautifier', 'colors', 'draggable', 'entities', 'fontFamily', 'fontSize', 'image',
-                    'imageManager', 'inlineStyle', 'inlineClass', 'lineBreaker', 'lineHeight', 'link', 'lists',
+                    'align', 'codeBeautifier', 'colors', 'draggable', 'entities', 'fontFamily', 'fontSize',
+                    'image',
+                    'imageManager', 'inlineStyle', 'inlineClass', 'lineBreaker', 'lineHeight', 'link',
+                    'lists',
                     'paragraphFormat', 'paragraphStyle', 'quickInsert', 'quote', 'table', 'url', 'wordPaste'
                 ],
                 imageUploadURL: '{{ route('image.upload') }}',

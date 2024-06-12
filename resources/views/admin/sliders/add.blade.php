@@ -35,7 +35,8 @@
                     <p>Preview:</p>
                     <div class="row">
                         <template>
-                            <div class="col-3" style="position: relative;" v-for="item, index in preview_list" :key="index">
+                            <div class="col-3" style="position: relative;" v-for="item, index in preview_list"
+                                :key="index">
                                 <a href="#" class="remove-btn" v-on:click="removeImage(index, $event)">
                                     <i class="fa fa-remove" title="Remove Photo"></i>
                                 </a>
@@ -180,9 +181,11 @@
                                             heading: 'Success',
                                             text: response.data.message,
                                             icon: 'success',
-                                            afterHidden: function() {
-                                                window.location.href =
-                                                    "{{ route('admin.pages') }}";
+                                            afterShown: function() {
+                                                setTimeout(function() {
+                                                    window.location.href =
+                                                        "{{ route('admin.pages') }}";
+                                                }), 1000;
                                             }
                                         });
                                     }

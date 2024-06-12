@@ -59,9 +59,11 @@
                                                 heading: 'Success',
                                                 text: response.data.message,
                                                 icon: 'success',
-                                                afterHidden: function() {
-                                                    window.location.href =
-                                                        "{{ route('admin.scroll-texts') }}";
+                                                afterShown: function() {
+                                                    setTimeout(function() {
+                                                        window.location.href =
+                                                            "{{ route('admin.scroll-texts') }}";
+                                                    }, 1000);
                                                 }
                                             });
                                         }

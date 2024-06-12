@@ -48,7 +48,8 @@
                 @if ($announcement->getFirstMediaUrl('announcement-files'))
                     <div class="col-lg-2 pb-4">
                         <label for="announcement_file">Attachment:</label>
-                        <a href="{{ $announcement->getFirstMediaUrl('announcement-files') }}" target="_blank">Download</a>
+                        <a href="{{ $announcement->getFirstMediaUrl('announcement-files') }}"
+                            target="_blank">Download</a>
                     </div>
                     <div class="col-lg-2">
                         <button type="button" v-on:click="removeAttachment()" class="button">Delete</button>
@@ -121,9 +122,11 @@
                                             heading: 'Success',
                                             text: response.data.message,
                                             icon: 'success',
-                                            afterHidden: function() {
-                                                window.location.href =
-                                                    "{{ route('admin.announcements.edit', ['id' => $announcement->id]) }}";
+                                            afterShown: function() {
+                                                setTimeout(function() {
+                                                    window.location.href =
+                                                        "{{ route('admin.announcements.edit', ['id' => $announcement->id]) }}";
+                                                }, 1000);
                                             }
                                         });
                                     }

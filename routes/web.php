@@ -25,6 +25,7 @@ Route::group(['middleware' => ['auth:sanctum', 'role:admin'], 'prefix' => '/admi
     Route::get('/pages/edit/{id}', [PageController::class, 'edit'])->name('pages.edit');
     Route::post('/pages/edit/{id}', [PageController::class, 'update'])->name('pages.update');
     Route::post('/pages/delete', [PageController::class, 'delete'])->name('pages.delete');
+    Route::post('/pages/remove-image/{id}', [PageController::class, 'removeImage'])->name('pages.remove-image');
 
     Route::get('/sliders', [SliderController::class, 'index'])->name('sliders');
     Route::get('/sliders/add', [SliderController::class, 'add'])->name('sliders.add');
