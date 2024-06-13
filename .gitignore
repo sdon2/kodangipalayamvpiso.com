@@ -8,6 +8,7 @@
 /public/event-images
 /storage/*.key
 /vendor
+/public/sitemap.xml
 .env
 .env.backup
 .phpunit.result.cache
