@@ -60,7 +60,9 @@ Route::group(['middleware' => ['auth:sanctum', 'role:admin'], 'prefix' => '/imag
 Route::get('/', [FrontendController::class, 'home'])
     ->name('home');
 
-Route::get('/{slug}', [FrontendController::class, 'page'])->name('page');
 Route::get('/announcement/{id}', [FrontendController::class, 'announcement'])->name('announcement.view');
 Route::get('/event/{id}', [FrontendController::class, 'event'])->name('event.view');
 Route::post('/complaint/receive', [FrontendController::class, 'complaint'])->name('complaint.receive');
+Route::get('/refresh-captcha', [FrontendController::class, 'refreshCaptcha'])->name('refresh-captcha');
+
+Route::get('/{slug}', [FrontendController::class, 'page'])->name('page');

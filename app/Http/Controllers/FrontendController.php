@@ -60,4 +60,11 @@ class FrontendController extends Controller
             return(back()->with('error', 'Oops! Sorry. Unable to register your complaint. Please try again later.'));
         }
     }
+
+    public function refreshCaptcha()
+    {
+        return response([
+            'image' => captcha_img(),
+        ]);
+    }
 }
