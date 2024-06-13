@@ -48,6 +48,7 @@
                     <div>
                         {!! captcha_img() !!}
                     </div>
+                    <div> = </div>
                     <div class="w-full">
                         <input id="captcha"
                             class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block ml-1 w-full"
