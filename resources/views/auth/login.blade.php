@@ -54,8 +54,9 @@
                     </div>
                 </div>
                 <div>
-                    <button type="button" href="#" class="refresh-captcha flex">
-                        <svg fill="#000000" height="20px" width="20px" version="1.1" id="Layer_1"
+                    <button type="button" href="#"
+                        class="refresh-captcha flex hover:bg-blue-700 hover:text-white p-1 mt-1 rounded">
+                        <svg fill="currentColor" height="20px" width="20px" version="1.1" id="Layer_1"
                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                             viewBox="0 0 383.748 383.748" xml:space="preserve">
                             <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
