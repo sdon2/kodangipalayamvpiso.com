@@ -3,6 +3,11 @@
     @push('content')
         <div class="container pt-4">
             <div class="h2">Announcements</div>
+        </div>
+        <div class="container pt-4">
+            {!! $page->content !!}
+        </div>
+        <div class="container pt-4">
             <x-announcement-list />
         </div>
     @endpush

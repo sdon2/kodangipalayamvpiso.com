@@ -6285,3 +6285,23 @@ body {
 .hidden {
     display: none;
 }
+
+.navbar-light .navbar-toggler {
+    color: #ffffff;
+    padding-top: 15px;
+    border: 1px solid #fff !important;
+}
+
+.navbar-light .navbar-toggler:focus {
+    outline: 5px auto #ffffff;
+}
+
+.navbar-light .navbar-toggler-icon {
+    background-image: none;
+    border-color: #ffffff;
+}
+
+.navbar-light .navbar-toggler-icon::before {
+    font-family: 'FontAwesome';
+    content: "\f0c9";
+}

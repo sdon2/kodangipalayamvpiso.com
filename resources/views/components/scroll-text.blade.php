@@ -1,5 +1,5 @@
 @if ($texts->count())
-    <div class="container-fluid scroller hidden">
+    <div class="container-fluid px-0 scroller hidden">
         <div class="marquee py-2 w-100">
             @foreach ($texts as $text)
                 <div><span>{{ $text->scroll_text }}</span></div>

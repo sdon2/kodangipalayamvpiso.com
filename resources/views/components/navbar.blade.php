@@ -17,12 +17,20 @@
 <nav class="navbar-expand-lg navbar_menus navbar-light shift">
     <div class="container">
         <div class="row">
-            <button class="navbar-toggler ml-5" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+            <div class="d-flex d-lg-none py-2 align-items-center">
+                <button class="navbar-toggler ml-5" type="button" data-toggle="collapse"
+                    data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="h3 m-0 ml-2" style="color: #fff">{{ config('app.name') }}</h4>
+                </div>
+            </div>
+        </div>
+        <div class="row">
             @if ($menu->count())
-                <ul class="collapse navbar-collapse justify-content-around p-mobile" id="navbarNavDropdown">
+                <ul class="mt-2 mt-lg-0 collapse navbar-collapse justify-content-around p-mobile"
+                    id="navbarNavDropdown">
                     @foreach ($menu as $entry)
                         <li class="nav-item">
                             <a class="nav-link px-2" href="{{ route('page', ['slug' => $entry->slug]) }}">

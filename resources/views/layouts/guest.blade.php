@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="{{ asset('assets/vendor/metisMenu/metisMenu.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('assets/vendor/slickNav/slicknav.min.css') }}" type="text/css">
     <!-- Custom -->
-    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset(mix('assets/css/style.css')) }}">
     <!-- END: Styles -->
     <!-- jQuery -->
     <script src="{{ asset('assets/bower_components/jquery/dist/jquery.min.js') }}"></script>
