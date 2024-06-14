@@ -1,5 +1,7 @@
 <x-guest-layout>
 
+    @section('title', __($page->title))
+
     <x-slot name="keywords">
         {{ $page->keywords }}
     </x-slot>
