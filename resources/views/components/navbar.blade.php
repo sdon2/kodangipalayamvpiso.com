@@ -11,6 +11,14 @@
                 </p>
             </div>
         </a>
+        <div class="d-flex d-lg-inine-block justify-content-center justify-content-lg-end w-100 pt-2">
+            <div>
+                <select onchange="setLocale(this)" class="ml-auto px-2 py-1 border border-dark">
+                    <option value="en" {{ app()->getLocale() == 'en' ? 'selected' : '' }}>English</option>
+                    <option value="ta" {{ app()->getLocale() == 'ta' ? 'selected' : '' }}>தமிழ்</option>
+                </select>
+            </div>
+        </div>
     </div>
 </nav>
 
@@ -36,7 +44,7 @@
                             <a class="nav-link px-2" href="{{ route('page', ['slug' => $entry->slug]) }}">
                                 <span class="menu_name {{ $entry->active ? 'active' : '' }}">
                                     <i class="{{ $entry->menu_icon ?: '' }} mr-1"></i>
-                                    {{ $entry->title }}
+                                    {{ __($entry->title) }}
                                 </span>
                             </a>
                         </li>
@@ -49,3 +57,11 @@
         </div>
     </div>
 </nav>
+
+@push('scripts')
+    <script>
+        function setLocale(select) {
+            window.location.href = "{{ route('locale') }}?lang=" + select.value;
+        }
+    </script>
+@endpush

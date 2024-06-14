@@ -16,7 +16,7 @@
             {{ \Carbon\Carbon::parse($event->event_date)->toFormattedDateString() }}</div>
         <div class="my-2">{{ $event->content }}</div>
         <div>
-            <a href="{{ route('event.view', ['id' => $event->id]) }}" class="btn btn-warning">Read More</a>
+            <a href="{{ route('event.view', ['id' => $event->id]) }}" class="btn btn-warning">{{ __('Read More') }}</a>
         </div>
     </div>
 @empty

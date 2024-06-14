@@ -10,7 +10,7 @@
 
     @push('content')
         <div class="container pt-4">
-            <div class="h2">Contact</div>
+            <div class="h2">{{ __('Contact') }}</div>
         </div>
         <div class="container pt-4">
             {!! $page->content !!}

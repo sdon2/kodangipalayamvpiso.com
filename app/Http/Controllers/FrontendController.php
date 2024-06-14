@@ -9,6 +9,7 @@ use App\Models\Page;
 use App\Models\Slider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Str;
 
@@ -55,9 +56,9 @@ class FrontendController extends Controller
         unset($data['message']);
 
         if (Mail::send(new RegisterComplaint($data))) {
-            return(back()->with('success', 'Your complaint has been registered successfully. Our representative will contact you regarding your complaint.'));
+            return (back()->with('success', 'Your complaint has been registered successfully. Our representative will contact you regarding your complaint.'));
         } else {
-            return(back()->with('error', 'Oops! Sorry. Unable to register your complaint. Please try again later.'));
+            return (back()->with('error', 'Oops! Sorry. Unable to register your complaint. Please try again later.'));
         }
     }
 
@@ -66,5 +67,14 @@ class FrontendController extends Controller
         return response([
             'image' => captcha_img(),
         ]);
+    }
+
+    public function switchLocale(Request $request)
+    {
+        if (!empty($request->lang)) {
+            Session::put('locale', $request->lang);
+        }
+
+        return redirect()->route('home');
     }
 }

@@ -10,7 +10,7 @@
 
     @push('content')
         <div class="container pt-4">
-            <div class="h2">Make a complaint</div>
+            <div class="h2">{{ __('Make a complaint') }}</div>
         </div>
 
         <div class="container pt-4">
@@ -39,9 +39,9 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="name">Name *</label>
+                                    <label for="name">{{ __('Name') }} *</label>
                                     <input id="name" type="text" name="name" class="form-control"
-                                        placeholder="Please enter your name *" required value="{{ old('name') }}">
+                                        placeholder="{{ __('Please enter your name') }} *" required value="{{ old('name') }}">
                                     @error('name')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -49,9 +49,9 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="phone">Phone *</label>
+                                <label for="phone">{{ __('Phone Number') }} *</label>
                                     <input id="phone" type="text" name="phone" class="form-control"
-                                        placeholder="Please enter your phone number *" required value="{{ old('phone') }}">
+                                placeholder="{{ __('Please enter your phone number') }} *" required value="{{ old('phone') }}">
                                     @error('phone')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -61,9 +61,9 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label for="message">Complaint Message *</label>
+                                    <label for="message">{{ __('Complaint Message') }} *</label>
                                     <textarea id="message" name="message" class="form-control" rows="4" required
-                                        placeholder="Please enter your complaint message *">{{ old('message') }}</textarea>
+                                        placeholder="{{ __('Please enter your complaint message') }} *">{{ old('message') }}</textarea>
                                     @error('message')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -71,7 +71,7 @@
                             </div>
                             <div class="col-md-12">
                                 <input type="submit" class="btn btn-success btn-send  pt-2 btn-block               "
-                                    value="Send Message">
+                                    value="{{ __('Send Message') }}">
                             </div>
                         </div>
                     </div>
