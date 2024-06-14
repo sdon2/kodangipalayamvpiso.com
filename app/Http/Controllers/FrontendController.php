@@ -7,6 +7,7 @@ use App\Models\Announcement;
 use App\Models\Event;
 use App\Models\Page;
 use App\Models\Slider;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
@@ -75,6 +76,10 @@ class FrontendController extends Controller
             Session::put('locale', $request->lang);
         }
 
-        return redirect()->route('home');
+        try {
+            return back();
+        } catch (Exception $ex) {
+            return redirect()->route('home');
+        }
     }
 }
