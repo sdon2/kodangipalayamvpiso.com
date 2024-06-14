@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>{{ config('app.name') }}</title>
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <meta name="description" content="{{ $description ?? null }}">
     <meta name="keywords" content="{{ $keywords ?? null }}">
     <meta name="author" content="Saravanakumar Arumugam <saravanakumar.a.o@gmail.com>">
