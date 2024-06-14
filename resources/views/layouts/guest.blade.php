@@ -4,13 +4,13 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>{{ config('app.name') }}</title>
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <meta name="description" content="{{ $description ?? null }}">
     <meta name="keywords" content="{{ $keywords ?? null }}">
     <meta name="author" content="Saravanakumar Arumugam <saravanakumar.a.o@gmail.com>">
-    <link rel="icon" type="image/png" href="{{ asset('assets/images/favicon.ico') }}">
+        <link rel="icon" type="image/png" href="{{ asset('assets/images/favicon.ico') }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ __(config('app.name')) }}</title>
     <!-- START: Styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
     <!-- Bootstrap -->
