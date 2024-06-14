@@ -1,4 +1,5 @@
 <x-guest-layout>
+
     @push('content')
         <div class="container mt-4">
             <div class="col-md-12 py-2 px-0">
@@ -11,4 +12,5 @@
             </div>
         </div>
     @endpush
+
 </x-guest-layout>

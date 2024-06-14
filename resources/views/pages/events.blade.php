@@ -1,5 +1,13 @@
 <x-guest-layout>
 
+    <x-slot name="keywords">
+        {{ $page->keywords }}
+    </x-slot>
+
+    <x-slot name="description">
+        {{ $page->description }}
+    </x-slot>
+
     @push('content')
         <div class="container pt-4">
             <div class="h2">Events</div>

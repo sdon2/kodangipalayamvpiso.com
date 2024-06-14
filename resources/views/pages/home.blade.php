@@ -1,7 +1,12 @@
 <x-guest-layout>
 
-    <x-slot name="keywords"></x-slot>
-    <x-slot name="description"></x-slot>
+    <x-slot name="keywords">
+        {{ $page->keywords }}
+    </x-slot>
+
+    <x-slot name="description">
+        {{ $page->description }}
+    </x-slot>
 
     <!-- START: Header Title -->
     <div class="nk-header-title nk-header-title-sm nk-header-title-parallax nk-header-title-parallax-opacity">
