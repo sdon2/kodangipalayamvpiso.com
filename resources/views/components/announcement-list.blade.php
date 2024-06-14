@@ -22,7 +22,7 @@
 @empty
     <div class="{{ $size }} py-2 px-0">
         <div class="alert alert-warning">
-            No announcements found. Please try after sometime.
+            {{ __('No announcements found') }}. {{ __('Please try after sometime') }}.
         </div>
     </div>
 @endforelse
