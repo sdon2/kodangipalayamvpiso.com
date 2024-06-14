@@ -56,9 +56,9 @@ class FrontendController extends Controller
         unset($data['message']);
 
         if (Mail::send(new RegisterComplaint($data))) {
-            return (back()->with('success', 'Your complaint has been registered successfully. Our representative will contact you regarding your complaint.'));
+            return (back()->with('success', __('Your complaint has been registered successfully. Our representative will contact you regarding your complaint.')));
         } else {
-            return (back()->with('error', 'Oops! Sorry. Unable to register your complaint. Please try again later.'));
+            return (back()->with('error', __('Oops! Sorry. Unable to register your complaint. Please try again later.')));
         }
     }
 
